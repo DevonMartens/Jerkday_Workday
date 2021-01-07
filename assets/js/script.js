@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $(".total-jerk").hide();
-  normalHour();
+ // normalHour();
   // listen for save button clicks
   $(".saveBtn").on("click", function() {
     // get nearby values
@@ -12,7 +12,7 @@ $(document).ready(function() {
  
   });
     //check if your a jerk
- 
+normalHour();
 
 
 
@@ -27,14 +27,20 @@ $(document).ready(function() {
 $("#success-btn").on("click", function() {
     $(".total-jerk").hide();
     $(".workday").show();
+    $(".jerkChicken").css("background","url('https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half/public/field_blog_entry_images/2017-10/success.jpg?itok=I-jXswy5')")
 normalHour();
+  // set up interval to check if current time needs to be updated
+  var interval = setInterval(normalHour, 15000);
 })
 
 $("#total-jerk-btn").on("click", function() {
   $(".total-jerk").show();
   $(".workday").hide();
   $(".jerkChicken").css("background","url('https://hips.hearstapps.com/del.h-cdn.co/assets/17/28/1499895297-jerk-chicken-delish.jpg?crop=1.00xw:0.750xh;0,0.252xh&resize=640:*')")
-jerkTime();
+  // set up interval to check if current time needs to be updated
+  var interval = setInterval(jerkTime, 15000);
+ 
+  jerkTime();
 })
 
 // if (hasBeenClicked) {
@@ -66,6 +72,7 @@ jerkTime();
 //jerkCheck();
 function normalHour() {
     // get current number of hours
+ 
     var currentHour = moment().hours();
 
     // loop over time blocks
@@ -122,8 +129,7 @@ function jerkTime() {
   }
 
 
-  // set up interval to check if current time needs to be updated
-  var interval = setInterval(normalHour, 15000);
+
 
   // load any saved data from localStorage
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
@@ -137,5 +143,5 @@ function jerkTime() {
   $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 
   // display current day on page
-  $("#currentDay").text(moment().format("dddd, MMMM Do"));
+  $(".currentDay").text(moment().format("dddd, MMMM Do"));
 });
