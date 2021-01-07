@@ -33,6 +33,7 @@ normalHour();
 $("#total-jerk-btn").on("click", function() {
   $(".total-jerk").show();
   $(".workday").hide();
+  $(".jerkChicken").css("background","url('https://hips.hearstapps.com/del.h-cdn.co/assets/17/28/1499895297-jerk-chicken-delish.jpg?crop=1.00xw:0.750xh;0,0.252xh&resize=640:*')")
 jerkTime();
 })
 
@@ -62,7 +63,7 @@ jerkTime();
 // jerkCheck();
 // }
 
-jerkCheck();
+//jerkCheck();
 function normalHour() {
     // get current number of hours
     var currentHour = moment().hours();
@@ -93,6 +94,8 @@ function normalHour() {
 
 //if jerk button is clicked run function
 function jerkTime() {
+ 
+  $("#currentDay").text(moment().format("dddd, MMMM Do"));
     // get current number of hours
     var currentHour = moment().hours();
 
@@ -115,11 +118,12 @@ function jerkTime() {
         $(this).addClass("jerkFuture");
       }
     })
+   
   }
 
 
   // set up interval to check if current time needs to be updated
-  var interval = setInterval(hourUpdater, 15000);
+  var interval = setInterval(normalHour, 15000);
 
   // load any saved data from localStorage
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
